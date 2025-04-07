@@ -1,0 +1,6 @@
+setup.py
+heart_stroke_prediction.egg-info/PKG-INFO
+heart_stroke_prediction.egg-info/SOURCES.txt
+heart_stroke_prediction.egg-info/dependency_links.txt
+heart_stroke_prediction.egg-info/requires.txt
+heart_stroke_prediction.egg-info/top_level.txt

@@ -1,0 +1,14 @@
+COLUMNS:
+  id: int64                 
+  gender: object           
+  age: float64                
+  hypertension: int64   
+  heart_disease: int64     
+  ever_married: object       
+  work_type: object          
+  Residence_type: object     
+  avg_glucose_level: float64  
+  bmi: float64                
+  smoking_status: object   
+TARGET_COLUMN:
+  name: stroke   
