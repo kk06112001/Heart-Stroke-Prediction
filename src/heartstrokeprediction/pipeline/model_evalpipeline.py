@@ -1,24 +1,24 @@
 from src.heartstrokeprediction.config.configuration import ConfigurationManager
-from src.heartstrokeprediction.components.model_trainer import ModelTrainer
+from src.heartstrokeprediction.components.model_eval import ModelEvaluation
 from src.heartstrokeprediction import logger
 
 STAGE_NAME = "Model Training stage"
 
-class ModelTrainingPipeline:
+class ModelEvaluationPipeline:
     def __init__(self):
         pass
 
-    def trainmodel(self):
+    def evalmodel(self):
         config = ConfigurationManager()
-        model_trainer_config = config.get_model_trainer_config()
-        model_trainer = ModelTrainer(config=model_trainer_config)
-        model_trainer.train()
+        model_eval_config = config.get_model_evaluation_config()
+        model_eval = ModelEvaluation(config=model_eval_config)
+        model_eval.log_into_mlflow()
 
 if __name__ == '__main__':
     try:
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        obj = ModelTrainingPipeline()
-        obj.trainmodel()
+        obj = ModelEvaluation()
+        obj.evalmodel()
         logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
     except Exception as e:
         logger.exception(e)

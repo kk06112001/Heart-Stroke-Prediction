@@ -4,7 +4,6 @@ from src.heartstrokeprediction import logger
 from sklearn.linear_model import LogisticRegression
 import joblib
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import classification_report
 from src.heartstrokeprediction.entity.config_entity import ModelTrainerConfig
 class ModelTrainer:
     def __init__(self, config: ModelTrainerConfig):
@@ -26,23 +25,16 @@ class ModelTrainer:
         train_x_scaled = scaler.fit_transform(train_x)  # Fit and transform the training data
         test_x_scaled = scaler.transform(test_x)  # Only transform the test data
 
-        # Initialize and train the Logistic Regression model
-        lr = LogisticRegression(random_state=42)
-        lr.fit(train_x_scaled, train_y)
+        # Initialize and train the model (using Linear Regression for regression task)
+        model = LogisticRegression(random_state=42)  # Replace with LinearRegression() if regression
+        model.fit(train_x_scaled, train_y)
 
-        # Evaluate the model
-        train_predictions = lr.predict(train_x_scaled)
-        test_predictions = lr.predict(test_x_scaled)
+        # Predict on both train and test sets
+        train_predictions = model.predict(train_x_scaled)
+        test_predictions = model.predict(test_x_scaled)
 
-        # Print classification report for training and testing sets
-        print("Training Classification Report:")
-        print(classification_report(train_y, train_predictions))
-        
-        print("Testing Classification Report:")
-        print(classification_report(test_y, test_predictions))
-
-        # Save the trained model
-        joblib.dump(lr, os.path.join(self.config.root_dir, self.config.model_name))
+        # Save the trained model and scaler
+        joblib.dump(model, os.path.join(self.config.root_dir, self.config.model_name))
         joblib.dump(scaler, os.path.join(self.config.root_dir, "scaler.pkl"))  # Save the scaler
 
         print(f"Model saved to {os.path.join(self.config.root_dir, self.config.model_name)}")

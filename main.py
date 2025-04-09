@@ -3,6 +3,7 @@ from src.heartstrokeprediction.pipeline.data_ingestionpipeline import DataIngest
 from src.heartstrokeprediction.pipeline.data_validationpipeline import DataValidationTrainingPipeline
 from src.heartstrokeprediction.pipeline.data_transformationpipeline import DataTransformationTrainingPipeline
 from src.heartstrokeprediction.pipeline.model_trainingpipeline import ModelTrainingPipeline
+from src.heartstrokeprediction.pipeline.model_evalpipeline import ModelEvaluationPipeline
 
 STAGE_NAME = "Data Ingestion stage"
 try:
@@ -39,6 +40,16 @@ try:
    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
    model = ModelTrainingPipeline()
    model.trainmodel()
+   logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+        logger.exception(e)
+        raise e
+     
+STAGE_NAME = "Model evaluation stage"
+try:
+   logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
+   data_ingestion = ModelEvaluationPipeline()
+   data_ingestion.evalmodel()
    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
 except Exception as e:
         logger.exception(e)

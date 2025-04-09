@@ -30,3 +30,14 @@ class ModelTrainerConfig:
     test_data_path: Path
     model_name: str
     target_column: str
+    
+@dataclass
+class ModelEvaluationConfig:
+    root_dir: Path
+    test_data_path: Path
+    model_path: Path
+    pkl_path: Path
+    all_params: dict
+    metric_file_name: Path
+    target_column: str
+    mlflow_uri: str

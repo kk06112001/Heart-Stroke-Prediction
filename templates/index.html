@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Stroke Prediction</title>
+</head>
+<body>
+    <h1>Heart Stroke Prediction</h1>
+    <form action="/predict" method="POST">
+        <label for="gender">Gender (1 for male, 0 for female):</label>
+        <input type="number" name="gender" placeholder="Enter Gender" required>
+        
+        <label for="age">Age:</label>
+        <input type="number" name="age" placeholder="Enter Age" required>
+        
+        <label for="hypertension">Hypertension (0 or 1):</label>
+        <input type="number" name="hypertension" placeholder="Enter Hypertension" required>
+        
+        <label for="heart_disease">Heart Disease (0 or 1):</label>
+        <input type="number" name="heart_disease" placeholder="Enter Heart Disease" required>
+        
+        <label for="ever_married">Ever Married (0 or 1):</label>
+        <input type="number" name="ever_married" placeholder="Ever Married (0 or 1)" required>
+        
+        <label for="work_type">Work Type (e.g., 0 for 'Private', 1 for 'Self-employed', etc.):</label>
+        <input type="number" name="work_type" placeholder="Enter Work Type" required>
+        
+        <label for="Residence_type">Residence Type (0 or 1):</label>
+        <input type="number" name="Residence_type" placeholder="Enter Residence Type" required>
+        
+        <label for="avg_glucose_level">Average Glucose Level:</label>
+        <input type="number" name="avg_glucose_level" placeholder="Enter Glucose Level" required>
+        
+        <label for="bmi">BMI:</label>
+        <input type="number" name="bmi" placeholder="Enter BMI" required>
+        
+        <label for="smoking_status">Smoking Status (0: never smoked, 1: formerly smoked, 2: smokes):</label>
+        <input type="number" name="smoking_status" placeholder="Enter Smoking Status" required>
+    
+        <input type="submit" value="Predict">
+    </form>
+    
+
+    <br><br>
+
+    <a href="/train">Train the Model</a>
+
+</body>
+</html>
